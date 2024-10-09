@@ -14,6 +14,10 @@
 
 ## 2. Create a Service for invoking the Azure Function
 
+This code is responsible for invoking an Azure Function by making an HTTP GET request and handling the result
+
+It uses an injected HttpClient to send the request asynchronously, and depending on the outcome, it either returns the response content or an error message
+
 **AzureFunctionService.cs**
 
 ```csharp
@@ -56,10 +60,40 @@ namespace MAUIBlazorAzureFunctionInvoking.Services
             }
         }
     }
-
 }
 ```
 
+**Namespace and Dependencies**:
+
+The code is inside the MAUIBlazorAzureFunctionInvoking.Services namespace
+
+It uses the System.Net.Http for making HTTP requests and System.Threading.Tasks to work with asynchronous operations
+
+**AzureFunctionService Class**:
+
+The class AzureFunctionService encapsulates the logic to invoke an Azure Function via an HTTP request
+
+It has a constructor that receives an HttpClient object (_httpClient) via dependency injection, which is used to make HTTP requests
+
+**InvokeFunctionAsync Method**:
+
+The method InvokeFunctionAsync is asynchronous (Task<string> return type) and returns a string representing the response or an error message
+
+It constructs a URL (functionUrl) that points to an Azure Function. The URL includes the function endpoint and an authentication code (code query parameter)
+
+**Making the Request**:
+
+The method calls _httpClient.GetAsync(functionUrl) to make a GET request to the Azure Function. This is an asynchronous operation (await keyword)
+
+**Handling the Response**:
+
+If the request is successful (response.IsSuccessStatusCode), the content of the response is read as a string using response.Content.ReadAsStringAsync()
+
+If the request fails (e.g., server error), it returns an error message with the HTTP status code
+
+**Error Handling**:
+
+The method is wrapped in a try-catch block to handle any exceptions that might occur during the HTTP request. If an exception is caught, it returns the exception's message
 
 ## 3. Create a component for invoking the Service
 
