@@ -97,6 +97,12 @@ The method is wrapped in a try-catch block to handle any exceptions that might o
 
 ## 3. Create a component for invoking the Service
 
+This Blazor component provides a user interface where a button triggers an Azure Function call through the AzureFunctionService
+
+It then displays the result of the Azure Function (or an error message) on the page
+
+The interaction is asynchronous, ensuring smooth UI updates without blocking the app
+
 **AzureFunctionInvokingComponent.razor**
 
 ```razor
@@ -127,7 +133,49 @@ The method is wrapped in a try-catch block to handle any exceptions that might o
 }
 ```
 
+This code is a Blazor component written in Razor syntax, used in a .NET MAUI Blazor app to invoke an Azure Function via a service (AzureFunctionService)
+
+**Component Declaration and Dependencies**:
+
+**@page "/AzureFunctionComponent"**: This line defines the URL route for this Blazor component. In this case, it's accessible via /AzureFunctionComponent
+
+**@using MAUIBlazorAzureFunctionInvoking.Services**: This imports the namespace where the AzureFunctionService is defined, allowing the component to use the service
+
+**@inject AzureFunctionService azureFunctionService**: This injects the AzureFunctionService into the component, making it available for invoking Azure Functions
+
+**HTML Markup**:
+
+**```<PageTitle>Invoke Azure Function</PageTitle>```**: This sets the title of the page in the browser or application tab
+
+The markup contains a heading (```<h3>Invoke Azure Function</h3>```), a button (```<button @onclick="InvokeAzureFunction">Invoke Function</button>```), and a paragraph (```<p>@responseMessage</p>```) that displays the response from the Azure Function
+
+**Button with Event Handling**:
+
+The button element (```<button @onclick="InvokeAzureFunction">```) is wired up with the @onclick directive to trigger the InvokeAzureFunction method when clicked
+
+This allows the button to initiate the process of invoking the Azure Function
+
+**Code Section (@code)**:
+
+This section contains the C# code that runs inside the Blazor component
+
+**private string responseMessage = string.Empty;**: This is a field that stores the response message from the Azure Function. It's initially an empty string
+
+**private async Task InvokeAzureFunction()**: This is an asynchronous method that calls the InvokeFunctionAsync method from the injected azureFunctionService
+
+When the button is clicked, it invokes this method to call the Azure Function, and the response message is stored in the responseMessage field
+
+The await keyword ensures that the component waits for the Azure Function to return a result before updating the responseMessage
+
 ## 4. Modify the middleware(Program.cs)
+
+We register the service with this code:
+
+```
+builder.Services.AddHttpClient<AzureFunctionService>();
+```
+
+This is the middleware whole code:
 
 **Program.cs**
 
