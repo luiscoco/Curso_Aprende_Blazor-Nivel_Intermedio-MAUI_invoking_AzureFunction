@@ -125,5 +125,6 @@ namespace MAUIBlazorAzureFunctionInvoking
 
 ## 5. Run the application and see the results
 
+![image](https://github.com/user-attachments/assets/e8696012-e688-464d-b25f-8eea8b1a5eb5)
 
-
+![image](https://github.com/user-attachments/assets/9a88e311-1df4-4e7c-a076-32eb257c7248)
