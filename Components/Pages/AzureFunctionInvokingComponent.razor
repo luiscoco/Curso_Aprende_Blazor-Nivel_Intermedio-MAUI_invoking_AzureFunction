@@ -1,0 +1,25 @@
+﻿@page "/AzureFunctionComponent"
+
+@using MAUIBlazorAzureFunctionInvoking.Services
+
+@inject AzureFunctionService azureFunctionService
+
+<PageTitle>Invoke Azure Function</PageTitle>
+
+<h3>Invoke Azure Function</h3>
+
+<p>
+    <button @onclick="InvokeAzureFunction">Invoke Function</button>
+</p>
+
+<p>@responseMessage</p>
+
+@code {
+    private string responseMessage = string.Empty;
+
+    private async Task InvokeAzureFunction()
+    {
+        // Call the Azure Function through the service
+        responseMessage = await azureFunctionService.InvokeFunctionAsync();
+    }
+}
