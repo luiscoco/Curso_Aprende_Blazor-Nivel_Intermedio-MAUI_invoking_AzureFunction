@@ -2,7 +2,15 @@
 
 ## 1. Run Visual Studio 2022 Community Edition and create a MAUI Blazor application
 
+![image](https://github.com/user-attachments/assets/923de41d-1791-4536-9d72-90ac114f66c9)
 
+![image](https://github.com/user-attachments/assets/18c590ba-8701-40e8-b256-e596ee9fa3ac)
+
+![image](https://github.com/user-attachments/assets/dc19e651-165e-4fec-82fe-3fd291d0464e)
+
+![image](https://github.com/user-attachments/assets/3d6872ac-c752-4279-802c-974077a43fdf)
+
+![image](https://github.com/user-attachments/assets/d510279f-c15b-4dbf-a275-c9e11e69c587)
 
 ## 2. Create a Service for invoking the Azure Function
 
