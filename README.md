@@ -1,5 +1,9 @@
 # How to invoke an Azure Function from a MAUI Blazor application
 
+**IMPORTANT NOTE**: as prerequisite for this sample is to create an Azure Function following the steps stablished in this URL:
+
+https://github.com/luiscoco/AzureFunctions_CreateFunctionInVisualStudio2022
+
 ## 1. Run Visual Studio 2022 Community Edition and create a MAUI Blazor application
 
 ![image](https://github.com/user-attachments/assets/923de41d-1791-4536-9d72-90ac114f66c9)
